@@ -30,7 +30,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="./admin/css/booking.css">
+    <link rel="stylesheet" href="./css/booking.css">
     <style>
       #guestdetailpanel{
         display: none;
@@ -47,13 +47,13 @@ session_start();
       <img class="sandslogo" src="./image/sandslogo.png" alt="logo">
       <p>sands</p>
     </div>
-    <ul>
+    <ul style="width:1000px;">
       <li><a href="#firstsection">Home</a></li>
       <li><a href="#secondsection">Rooms</a></li>
       <li><a href="#thirdsection">Facilites</a></li>
       <li><a href="javascript:openbookbox()">Book Now</a></li>
       <li><a href='roomdelete.php'>Cancel Booking</a>
-      <!-- <li><a href="#contactus">Contact us</a></li> -->
+      <li><a href="#contactus">Contact us</a></li>
     </ul>
   </nav>
 
@@ -149,7 +149,7 @@ session_start();
                 $Meal = $_POST['Meal'];
                 $cin = $_POST['cin'];
                 $cout = $_POST['cout'];
-                if($FirstName == "" || $Guest_id == "" || $LastName = "" || $Email = "" || $Account_no="" ){
+                if($FirstName == "" || $Guest_id == "" || $LastName == "" || $Email == "" || $Account_no=="" ){
                     echo "<script>swal({
                         title: 'Fill the proper details',
                         icon: 'error',
