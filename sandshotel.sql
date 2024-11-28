@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 9, 2024 at 11:19 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Nov 28, 2024 at 08:00 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -19,81 +19,7 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `sandshotel`
--- User: `sands_user`
--- Password:   `password`
 --
-DROP DATABASE IF EXISTS sandshotel;
-CREATE DATABASE IF NOT EXISTS sandshotel;
-
-DROP USER IF EXISTS'sands_user'@'%';
-CREATE USER IF NOT EXISTS 'sands_user'@'%' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON sandshotel.* TO 'sands_user'@'%';
-USE sandshotel;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment`
---
-
-CREATE TABLE `payment` (
-  `id` int(30) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Email` varchar(30) NOT NULL,
-  `RoomType` varchar(30) NOT NULL,
-  `Bed` varchar(30) NOT NULL,
-  `NoofRoom` int(30) NOT NULL,
-  `cin` date NOT NULL,
-  `cout` date NOT NULL,
-  `noofdays` int(30) NOT NULL,
-  `roomtotal` double(8,2) NOT NULL,
-  `bedtotal` double(8,2) NOT NULL,
-  `meal` varchar(30) NOT NULL,
-  `mealtotal` double(8,2) NOT NULL,
-  `finaltotal` double(8,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`id`, `Name`, `Email`, `RoomType`, `Bed`, `NoofRoom`, `cin`, `cout`, `noofdays`, `roomtotal`, `bedtotal`, `meal`, `mealtotal`, `finaltotal`) VALUES
-(41, 'Tushar pankhaniya', 'pankhaniyatushar9@gmail.com', 'Single Room', 'Single', 1, '2022-11-09', '2022-11-10', 1, 1000.00, 10.00, 'Room only', 0.00, 1010.00);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `room`
---
-
-CREATE TABLE `room` (
-  `id` int(30) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `bedding` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `room`
---
-
-INSERT INTO `room` (`id`, `type`, `bedding`) VALUES
-(4, 'Superior Room', 'Single'),
-(6, 'Superior Room', 'Triple'),
-(7, 'Superior Room', 'Quad'),
-(8, 'Deluxe Room', 'Single'),
-(9, 'Deluxe Room', 'Double'),
-(10, 'Deluxe Room', 'Triple'),
-(11, 'Guest House', 'Single'),
-(12, 'Guest House', 'Double'),
-(13, 'Guest House', 'Triple'),
-(14, 'Guest House', 'Quad'),
-(16, 'Superior Room', 'Double'),
-(20, 'Single Room', 'Single'),
-(22, 'Superior Room', 'Single'),
-(23, 'Deluxe Room', 'Single'),
-(24, 'Deluxe Room', 'Triple'),
-(27, 'Guest House', 'Double'),
-(30, 'Deluxe Room', 'Single');
 
 -- --------------------------------------------------------
 
@@ -103,85 +29,118 @@ INSERT INTO `room` (`id`, `type`, `bedding`) VALUES
 
 CREATE TABLE `booking` (
   `id` int(10) NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Country` varchar(30) NOT NULL,
-  `Phone` varchar(30) NOT NULL,
   `RoomType` varchar(30) NOT NULL,
-  `Bed` varchar(30) NOT NULL,
   `Meal` varchar(30) NOT NULL,
   `NoofRoom` varchar(30) NOT NULL,
   `cin` date NOT NULL,
   `cout` date NOT NULL,
   `nodays` int(50) NOT NULL,
-  `stat` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `stat` varchar(30) NOT NULL,
+  `guest_id` int(11) NOT NULL,
+  `total_amount` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `Name`, `Email`, `Country`, `Phone`, `RoomType`, `Bed`, `Meal`, `NoofRoom`, `cin`, `cout`, `nodays`, `stat`) VALUES
-(41, 'Tushar pankhaniya', 'pankhaniyatushar9@gmail.com', 'India', '9313346569', 'Single Room', 'Single', 'Room only', '1', '2022-11-09', '2022-11-10', 1, 'Confirm');
-
--- --------------------------------------------------------
-
-CREATE TABLE guest(
-    guest_id INT PRIMARY KEY,
-    phoneno BIGINT NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    first_name VARCHAR(20),
-    last_name VARCHAR(20),
-    account_no BIGINT
-);
+INSERT INTO `booking` (`id`, `RoomType`, `Meal`, `NoofRoom`, `cin`, `cout`, `nodays`, `stat`, `guest_id`, `total_amount`) VALUES
+(68, 'Guest House', 'Half Board', '2', '2024-11-20', '2024-11-22', 2, 'Confirmed', 900789009, NULL),
+(69, 'Superior Room', 'Room only', '1', '2024-11-29', '2024-12-04', 5, 'Confirmed', 6789, NULL),
+(70, 'Superior Room', 'Breakfast', '2', '2024-11-30', '2024-12-02', 2, 'Confirmed', 9008, 14800);
 
 -- --------------------------------------------------------
 
 --
--- Indexes for table `emp_login`
+-- Table structure for table `guest`
 --
-ALTER TABLE `emp_login`
-  ADD PRIMARY KEY (`empid`);
+
+CREATE TABLE `guest` (
+  `guest_id` int(11) NOT NULL,
+  `phoneno` bigint(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `first_name` varchar(20) DEFAULT NULL,
+  `last_name` varchar(20) DEFAULT NULL,
+  `account_no` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for table `payment`
+-- Dumping data for table `guest`
 --
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`id`);
+
+INSERT INTO `guest` (`guest_id`, `phoneno`, `email`, `first_name`, `last_name`, `account_no`) VALUES
+(6789, 8905678467, 'sehalbht@gmail.com', 'Snehal', 'Bhatia', 456782),
+(9008, 97864444567, 'wincentsmith@gmail.com', 'Sayand', 'Biju', 6775),
+(900789009, 987687654, 'sneha123@gmail.com', 'Sneha', 'Biju', 56789);
+
+-- --------------------------------------------------------
 
 --
--- Indexes for table `room`
+-- Table structure for table `room`
 --
-ALTER TABLE `room`
-  ADD PRIMARY KEY (`id`);
+
+CREATE TABLE `room` (
+  `id` int(30) NOT NULL,
+  `type` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`id`, `type`) VALUES
+(8, 'Deluxe Room'),
+(9, 'Deluxe Room'),
+(10, 'Deluxe Room'),
+(23, 'Deluxe Room'),
+(24, 'Deluxe Room'),
+(30, 'Deluxe Room'),
+(11, 'Guest House'),
+(12, 'Guest House'),
+(13, 'Guest House'),
+(14, 'Guest House'),
+(27, 'Guest House'),
+(20, 'Single Room'),
+(4, 'Superior Room'),
+(6, 'Superior Room'),
+(7, 'Superior Room'),
+(16, 'Superior Room'),
+(22, 'Superior Room');
+
+--
+-- Indexes for dumped tables
+--
 
 --
 -- Indexes for table `booking`
 --
 ALTER TABLE `booking`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `guest_id` (`guest_id`),
+  ADD KEY `RoomType` (`RoomType`);
 
 --
--- Indexes for table `signup`
+-- Indexes for table `guest`
 --
-ALTER TABLE `signup`
-  ADD PRIMARY KEY (`UserID`);
+ALTER TABLE `guest`
+  ADD PRIMARY KEY (`guest_id`);
 
 --
--- Indexes for table `staff`
+-- Indexes for table `room`
 --
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `room`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type` (`type`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `emp_login`
+-- AUTO_INCREMENT for table `booking`
 --
-ALTER TABLE `emp_login`
-  MODIFY `empid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `booking`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -190,11 +149,15 @@ ALTER TABLE `room`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `booking`
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
-
+  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`guest_id`) REFERENCES `guest` (`guest_id`),
+  ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`RoomType`) REFERENCES `room` (`type`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

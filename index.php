@@ -149,6 +149,10 @@ session_start();
                 $Meal = $_POST['Meal'];
                 $cin = $_POST['cin'];
                 $cout = $_POST['cout'];
+                $date1 = new DateTime($cin);
+                $date2 = new DateTime($cout);
+                $interval = $date1->diff($date2);
+                $noOfDays = $interval->days;
                 if($FirstName == "" || $Guest_id == "" || $LastName == "" || $Email == "" || $Account_no=="" ){
                     echo "<script>swal({
                         title: 'Fill the proper details',
@@ -177,7 +181,7 @@ session_start();
                     // Calculate the available rooms
                     $availableRooms = $totalRooms - $bookedRooms;
                     echo "<script>console.log('Total Rooms: " . $totalRooms . "');</script>";
-echo "<script>console.log('Booked Rooms: " . $bookedRooms . "');</script>";
+                    echo "<script>console.log('Booked Rooms: " . $bookedRooms . "');</script>";
 
                     // $check = mysqli_query($conn, $sqlcheck);
 
@@ -185,8 +189,33 @@ echo "<script>console.log('Booked Rooms: " . $bookedRooms . "');</script>";
                     // Access the count value
                     // $count = $row['count'];
                     if ($availableRooms>0){
+
+                      $type_of_room = 0;
+                      if ($RoomType == "Superior Room") {
+                        $type_of_room = 3200;
+                      } else if ($RoomType == "Deluxe Room") {
+                        $type_of_room = 2200;
+                      } else if ($RoomType == "Guest House") {
+                        $type_of_room = 1800;
+                      } else if ($RoomType == "Single Room") {
+                        $type_of_room = 1500;
+                      }
+
+                      if ($Meal == "Room only") {
+                        $type_of_meal = 0;
+                      } else if ($Meal == "Breakfast") {
+                        $type_of_meal = 500;
+                      } else if ($Meal == "Half Board") {
+                        $type_of_meal = 900;
+                      } else if ($Meal == "Full Board") {
+                        $type_of_meal = 1250;
+                      }
+
+                      $tot= $type_of_room*$NoofRoom*$noOfDays + $type_of_meal*$noOfDays*$NoofRoom;
+                      echo "<script>console.log('Total: $tot, Type of Room: $type_of_room, Number of Rooms: $NoofRoom, Type of Meal: $type_of_meal, Number of Days: $noOfDays');</script>";
+                      
                       $sql = "INSERT INTO guest(guest_id, phoneno, email, first_name, last_name, account_no) values ('$Guest_id', '$Phone', '$Email', '$FirstName', '$LastName', '$Account_no')"; 
-                    $sql2="INSERT INTO booking(RoomType,Meal, NoofRoom,cin,cout,nodays,stat,guest_id) VALUES ('$RoomType','$Meal','$NoofRoom','$cin','$cout',datediff('$cout','$cin'),'$stat', '$Guest_id')";
+                    $sql2="INSERT INTO booking(RoomType,Meal, NoofRoom,cin,cout,nodays,stat,guest_id,total_amount) VALUES ('$RoomType','$Meal','$NoofRoom','$cin','$cout','$noOfDays','$stat', '$Guest_id', '$tot')";
                     
                     $result = mysqli_query($conn, $sql);
                     $result1 = mysqli_query($conn,$sql2);
@@ -196,12 +225,25 @@ echo "<script>console.log('Booked Rooms: " . $bookedRooms . "');</script>";
                       $idresult = mysqli_query($conn, $getid);
                       $idrow = mysqli_fetch_assoc($idresult);
                       $bookingid = $idrow['id'];
-                        echo "<script>swal({
-                            title: 'Reservation successful',
-                            text: 'Your booking ID is : $bookingid',
-                            icon: 'success',
-                        });
-                        </script>";
+                      echo "<script>
+                      swal({
+                        title: 'Payment',
+                        text: 'Total amount: $tot\\nPlease confirm to proceed.',
+                        icon: 'info',
+                        buttons: {
+                          cancel: 'Cancel',
+                          confirm: {
+                            text: 'Confirm',
+                            value: true,
+                          }
+                        }
+                      }).then(function(isConfirm) {
+                        if (isConfirm) {
+                          swal('Reservation successful', 'Your booking ID is : $bookingid\\nThank you!', 'success');
+                        }
+                      });
+                      </script>";
+                      
                     } else {
                         echo "<script>swal({
                             title: 'Something went wrong',

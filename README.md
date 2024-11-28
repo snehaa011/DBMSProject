@@ -36,13 +36,3 @@ Now register and login
 Open the link "http://localhost/Hotel-Management-System/"
 Now register and login
 ```
-
-
-### login page
-
-```sh
-== Staff Login ==
-
-Email : Admin@gmail.com
-Password : 1234
-```
