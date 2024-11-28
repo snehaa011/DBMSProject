@@ -21,8 +21,7 @@ BOOTSTRAP
 4 Open the link "localhost/phpmyadmin/"
 5 Click on new at sidebar and create a database name "sandshotel"
 After clicking database click import and select the file "sandshotel.sql"
-Open the link "http://localhost/Hotel-Management-System/"
-Now register and login
+Open the link "http://localhost/DBMSProject/"
 ```
 
 ## Requirements Linux[Rocky Linux 9]:
@@ -33,6 +32,5 @@ Now register and login
 3 Enable execute permissions on setup.sh `chmod 755 setup.sh`
 4 Login as root or use `sudo su - root`
 5 Run setup.sh `./setup.sh`
-Open the link "http://localhost/Hotel-Management-System/"
-Now register and login
+Open the link "http://localhost/DBMSProject/"
 ```
