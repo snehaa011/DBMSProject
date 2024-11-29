@@ -23,6 +23,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/home.css">
     <title>Hotel Sands</title>
+    <a href="https://pikbest.com//backgrounds/hotel-lobby-the-of-a-with-dark-walls-and-chandelier_9481964.html"></a>
     <!-- boot -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -42,7 +43,7 @@ session_start();
 </head>
 
 <body>
-  <nav>
+<nav>
     <div class="logo">
       <img class="sandslogo" src="./image/sandslogo.png" alt="logo">
       <p>sands</p>
@@ -58,19 +59,22 @@ session_start();
   </nav>
 
   <section id="firstsection" class="carousel slide carousel_section" data-bs-ride="carousel">
+  
+  
+
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="carousel-image" src="./image/hotel1.jpg">
+            <img class="carousel-image" src="./image/pexels-heyho-6758528.jpg">
         </div>
         <div class="carousel-item">
-            <img class="carousel-image" src="./image/hotel2.jpg">
+            <img class="carousel-image" src="./image/dine.jpg">
         </div>
         <div class="carousel-item">
             <img class="carousel-image" src="./image/hotel3.jpg">
         </div>
-        <div class="carousel-item">
+        <!-- <div class="carousel-item">
             <img class="carousel-image" src="./image/hotel4.jpg">
-        </div>
+        </div> -->
 
         <div class="welcomeline">
           <h1 class="welcometag">Welcome to Sands Stay</h1>
@@ -81,7 +85,7 @@ session_start();
         <form action="" method="POST" class="guestdetailpanelform">
             <div class="head">
                 <h3>RESERVATION</h3>
-                <i class="fa-solid fa-circle-xmark" onclick="closebox()"></i>
+                <i class="fa-solid fa-circl e-xmark" onclick="closebox()"></i>
             </div>
             <div class="middle">
                 <div class="guestinfo">
@@ -112,7 +116,7 @@ session_start();
                         <option value="3">3</option>
                     </select>
                     <select name="Meal" class="selectinput">
-						<option value selected >Meal</option>
+						<option value selected >Meal (Additional charges apply)</option>
                         <option value="Room only">Room only</option>
                         <option value="Breakfast">Breakfast</option>
 						      <option value="Half Board">Half Board</option>
@@ -269,7 +273,8 @@ session_start();
   </section>
     
   <section id="secondsection"> 
-    <img src="./image/homeanimatebg.svg">
+    <img src="./image/meow.png" style="opacity: 0.5;"> 
+     
     <div class="ourroom">
       <h1 class="head">≼ Our room ≽</h1>
       <div class="roomselect">
@@ -284,7 +289,7 @@ session_start();
               <i class="fa-solid fa-dumbbell"></i>
               <i class="fa-solid fa-person-swimming"></i>
             </div>
-            <button class="btn btn-primary bookbtn" onclick="openbookbox()">Book</button>
+            <button class="btn btn-primary custom-bookbtn" onclick="openbookbox()">Book</button>
           </div>
         </div>
         <div class="roombox">
@@ -297,7 +302,7 @@ session_start();
               <i class="fa-solid fa-spa"></i>
               <i class="fa-solid fa-dumbbell"></i>
             </div>
-            <button class="btn btn-primary bookbtn" onclick="openbookbox()">Book</button>
+            <button class="btn btn-primary custom-bookbtn" onclick="openbookbox()">Book</button>
           </div>
         </div>
         <div class="roombox">
@@ -309,7 +314,7 @@ session_start();
               <i class="fa-solid fa-burger"></i>
               <i class="fa-solid fa-spa"></i>
             </div>
-            <button class="btn btn-primary bookbtn" onclick="openbookbox()">Book</button>
+            <button class="btn btn-primary custom-bookbtn" onclick="openbookbox()">Book</button>
           </div>
         </div>
         <div class="roombox">
@@ -320,7 +325,7 @@ session_start();
               <i class="fa-solid fa-wifi"></i>
               <i class="fa-solid fa-burger"></i>
             </div>
-            <button class="btn btn-primary bookbtn" onclick="openbookbox()">Book</button>
+            <button class="btn btn-primary custom-bookbtn" onclick="openbookbox()">Book</button>
           </div>
         </div>
       </div>
@@ -343,7 +348,7 @@ session_start();
         <h2>24*7 Gym</h2>
       </div>
       <div class="box">
-        <h2>Heli service</h2>
+        <h2>Kids park</h2>
       </div>
     </div>
   </section>

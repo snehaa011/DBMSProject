@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Cookie&family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
 
 :root {
     --bg-text-shadow: 0 2px 4px rgb(13 0 77 / 8%), 0 3px 6px rgb(13 0 77 / 8%), 0 8px 16px rgb(13 0 77 / 8%);
@@ -25,7 +28,7 @@ nav{
     position: fixed;
     height: 60px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.279);
+    background-color: rgba(226, 213, 206, 0.3);
     z-index: 200;
     display: flex;
     justify-content: space-between;
@@ -84,16 +87,20 @@ ul li a:hover{
     display: flex;
     align-items: center;
     font-size: 30px;
+    font-family: 'Dancing Script', cursive;
     color: rgb(66, 68, 74);
     text-shadow: var(--bg-text-shadow);
 }
 
+
 #firstsection{
     height: 100vh;
-    background-color: rgba(175, 175, 222, 0.511);
+    background-color: transparent;
     width: 100%;
     /* z-index: 2000; */
 }
+
+
 
 #firstsection .carousel-inner{
     width: 100%;
@@ -105,7 +112,7 @@ ul li a:hover{
     position: absolute;
     height: 100vh;
     width: 100%;
-    background-color: rgba(178, 170, 236, 0.533);
+     background-color: rgba(255, 255, 255, 0); 
 }
 
 #firstsection .carousel-item{
@@ -115,6 +122,7 @@ ul li a:hover{
 #firstsection .carousel-item img{
     width: 100%;
     height: 100vh;
+    opacity: 0.7;
 }
 
 
@@ -129,16 +137,16 @@ ul li a:hover{
 }
 
 #firstsection .welcometag{
-    font-size: 110px;
-    font-weight: bold;
-    font-family: 'Cookie', cursive;
-    letter-spacing: 2px;
+    font-size: 60px;
+    font-family: 'Libre Baskerville', cursive;
+    font-style: italic;
     line-height: 100px;
     padding: 5px;
+    margin-bottom: 10rem;
     /* text gradiant */
-    background: -webkit-linear-gradient(317deg, rgba(52, 30, 19, 0.81) 0%, rgb(97, 74, 59) 70%);
+     background: -webkit-linear-gradient(317deg, rgba(85, 58, 58, 0.6) 100%, rgba(133, 88, 88, 0.8) 100%); 
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color:rgb(49, 39, 24);
 }
 
 /* secondsection */
@@ -148,10 +156,10 @@ ul li a:hover{
 }
 
 #secondsection img{
-    /* background-size: cover; */
+    background-size: cover; 
     height: 100vh;
     width: 100%;
-    filter: blur(20px);
+     filter: normal;
     position: absolute;
     /* -webkit-backdrop-filter: blur(30px);  */
     z-index: -2;
@@ -179,7 +187,7 @@ ul li a:hover{
 .roomselect .roombox{
     height: 100%;
     width: 300px;
-    background-color: rgb(8, 8, 48);
+    background-color: #C3A77B;
     border-radius: 10px;
     overflow: hidden;
     /* margin: 0 20px; */
@@ -188,18 +196,18 @@ ul li a:hover{
 .hotelphoto{
     height: 250px;
     width: 100%;
-    background-color: aquamarine;
+    background-color: rgb(212, 212, 143);
     background-size: cover;
 }
 
 .h1{
-    background-image: url(../image/hotel1photo.webp);
+    background-image: url(../image/an\ actual\ suite\ room\ with\ a\ royal\ aesthetic.png);
 }
 .h2{
-    background-image: url(../image/hotel2photo.jpg);
+    background-image: url(../image/aesthetic\ light\ colored\ suite\ room\ in\ 1920\ x\ 1080p\ dimensions.png);
 }
 .h3{
-    background-image: url(../image/hotel3photo.avif);
+    background-image: url(../image/db.png);
 }
 .h4{
     background-image: url(../image/hotel4photo.jpg);
@@ -210,7 +218,7 @@ ul li a:hover{
 }
 
 .roomdata h2{
-color: rgb(207, 211, 255);
+color: rgb(255, 255, 255);
 font-size: 30px;
 }
 
@@ -223,8 +231,14 @@ font-size: 30px;
     margin: 7px;
 }
 
-.bookbtn{
+/* .bookbtn{
    margin: 10px;
+} */
+.custom-bookbtn {
+    background-color: #774d44 !important; /* Override Bootstrap's background color */
+    color: #ffffff !important;          /* Override text color */
+    border: none !important;
+    margin: 10px;
 }
 
 /* bookingcss */
@@ -236,6 +250,7 @@ font-size: 30px;
     position: fixed;
     z-index: 10000;
 }
+
 
 .logoutbtn{
     height: 20px;
@@ -260,7 +275,7 @@ font-size: 30px;
     height: 100%;
     width: 310px;
     border: 2px solid white;
-    background-color: #0040ff;
+    background-color: #989ba4;
 }
 
 .facility .box h2{
@@ -288,7 +303,7 @@ font-size: 30px;
     background-size: cover;
 }
 .box:nth-child(5){
-    background-image: url(../image/heli.jpg);
+    background-image: url(../image/park.jpg);
     background-size: cover
 }
 

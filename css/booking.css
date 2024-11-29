@@ -81,13 +81,13 @@ i{
     /* display: flex; */
     justify-content: center;
     /* align-items: center; */
-    background-color: #00000079;
+    background-color: #fdfaf7;
 }
 
 #guestdetailpanel .guestdetailpanelform{
     height: 620px;
     width: 1170px;
-    background-color: #ccdff4;
+    background-color: #fdfaf7 !important;
     border-radius: 10px;  
     /* temp */
     position: relative;
@@ -133,8 +133,9 @@ a{
 
 .guestdetailpanelform .middle .guestinfo{
     width: 100%;
-    background-color: rgba(155, 187, 255, 0.752);
+    /* background-color: rgba(155, 187, 255, 0.752); */
     padding: 20px;
+    background-color: #d6c9bb;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -142,7 +143,8 @@ a{
 .guestdetailpanelform .middle .reservationinfo{
     
     width: 100%;
-    background-color: rgba(155, 187, 255, 0.752);
+    /* background-color: rgba(155, 187, 255, 0.752); */
+    background-color: #d6c9bb;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -164,7 +166,7 @@ a{
 .middle input,.selectinput{
     width: 100%;
     border: none;
-    background-color: #d1d7ff;
+    background-color: #d6c9bb;
     padding: 10px;
     margin: 10px 0;
     border-radius: 20px;
